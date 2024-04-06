@@ -3,12 +3,17 @@ import ReactDOM from 'react-dom/client';
 import App from './routes/App.jsx';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import BigSpinner from './components/BigSpinner.jsx';
-
+import Login from './Login.jsx';
 const router = createBrowserRouter([
   {
     path: '/',
     element: <App />,
-    children: [{}],
+    children: [
+      {
+        path: '/login',
+        element: <Login />,
+      },
+    ],
   },
 ]);
 
