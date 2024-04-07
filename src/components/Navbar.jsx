@@ -1,11 +1,17 @@
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
-export default function Navbar() {
+export default function Navbar({ isLoggedIn }) {
   return (
     <>
       <ul>
         <li>
-          <Link to={'login'}>Login</Link>
+          {' '}
+          {isLoggedIn ? (
+            <Link to={'log-out'}>Log out</Link>
+          ) : (
+            <Link to={'login'}>Login</Link>
+          )}
         </li>
         <li>
           <Link to={'posts'}>Posts</Link>
@@ -17,3 +23,6 @@ export default function Navbar() {
     </>
   );
 }
+Navbar.propTypes = {
+  isLoggedIn: PropTypes.bool,
+};
