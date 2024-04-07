@@ -1,10 +1,9 @@
-import { redirect } from 'react-router-dom';
-
 export async function actionLogin({ request }) {
   const formData = await request.formData();
   const username = formData.get('username');
   const password = formData.get('password');
   let errors = {};
+  let user = {};
 
   // Validate fields
   if (username.length < 1) {
@@ -43,5 +42,6 @@ export async function actionLogin({ request }) {
   } catch (err) {
     throw new Error('Error during logging in', err);
   }
-  return redirect('/posts');
+  user.isLogged = true;
+  return user;
 }
