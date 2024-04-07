@@ -4,6 +4,8 @@ import App from './routes/App.jsx';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import BigSpinner from './components/BigSpinner.jsx';
 import Login from './Login.jsx';
+import { actionLogin } from './loginAction.jsx';
+
 const router = createBrowserRouter([
   {
     path: '/',
@@ -12,6 +14,7 @@ const router = createBrowserRouter([
       {
         path: '/login',
         element: <Login />,
+        action: actionLogin,
       },
     ],
   },
