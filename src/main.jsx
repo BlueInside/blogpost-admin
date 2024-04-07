@@ -5,7 +5,8 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import BigSpinner from './components/BigSpinner.jsx';
 import Login from './Login.jsx';
 import { actionLogin } from './loginAction.jsx';
-
+import Posts from './Posts.jsx';
+import { loader as postsLoader } from './postsLoader.jsx';
 const router = createBrowserRouter([
   {
     path: '/',
@@ -15,6 +16,11 @@ const router = createBrowserRouter([
         path: '/login',
         element: <Login />,
         action: actionLogin,
+      },
+      {
+        path: '/posts',
+        element: <Posts />,
+        loader: postsLoader,
       },
     ],
   },
