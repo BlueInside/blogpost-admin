@@ -1,13 +1,14 @@
 import { Outlet } from 'react-router-dom';
 import Navbar from '../components/Navbar';
+import { useState } from 'react';
 
-function App() {
+export default function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
   return (
     <>
-      <Navbar />
-      <Outlet />
+      <Navbar isLoggedIn={isLoggedIn} />
+      <Outlet context={[isLoggedIn, setIsLoggedIn]} />
     </>
   );
 }
-
-export default App;
