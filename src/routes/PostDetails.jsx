@@ -9,9 +9,7 @@ export default function PostDetails() {
 
   if (!post) return <p>Post not found</p>;
   if (isEditing)
-    return (
-      <EditPostForm {...post} handleCancelEdit={() => setIsEditing(false)} />
-    );
+    return <EditPostForm {...post} closeEditForm={() => setIsEditing(false)} />;
   return (
     <div>
       <h1>{post.title}</h1>
