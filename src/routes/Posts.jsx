@@ -1,6 +1,8 @@
 import { useLoaderData, useOutletContext } from 'react-router-dom';
 import Post from '../components/Post';
 import { Link } from 'react-router-dom';
+import { htmlDecode } from '../utils/htmlDecode';
+
 export default function Posts() {
   const posts = useLoaderData();
   const [isLoggedIn] = useOutletContext();
@@ -19,8 +21,8 @@ export default function Posts() {
         <Post
           key={post._id}
           id={post._id}
-          title={post.title}
-          content={post.content}
+          title={htmlDecode(post.title)}
+          content={htmlDecode(post.content)}
           isPublished={post.isPublished}
         />
       ))}

@@ -1,6 +1,7 @@
 import { useLoaderData, Outlet, useActionData } from 'react-router-dom';
 import { useState } from 'react';
 import EditPostForm from '../components/EditPostForm';
+import { htmlDecode } from '../utils/htmlDecode';
 
 export default function PostDetails() {
   const [showComments, setShowComments] = useState(false);
@@ -22,7 +23,7 @@ export default function PostDetails() {
             <span>{`${error.path} - ${error.msg}`}</span>
           </p>
         ))}
-      <h1>{post.title}</h1>
+      <h1>{htmlDecode(post.title)}</h1>
       <button onClick={() => setIsEditing(!isEditing)}>Edit</button>
       <div>
         <span>{post.author.fullname} </span>
@@ -30,7 +31,7 @@ export default function PostDetails() {
         <span>Published: {post.isPublished ? 'Yes' : 'No'}</span>
       </div>
       <div>
-        <p>{post.content}</p>
+        <p>{htmlDecode(post.content)}</p>
       </div>
       <div>
         <p>Number of comments: {post.comments.length}</p>

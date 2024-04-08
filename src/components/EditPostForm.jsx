@@ -1,6 +1,7 @@
 import { Form, useSubmit } from 'react-router-dom';
 import { useState } from 'react';
 import PropTypes from 'prop-types';
+import { htmlDecode } from '../utils/htmlDecode';
 export default function EditPostForm({
   closeEditForm,
   title,
@@ -9,8 +10,8 @@ export default function EditPostForm({
 }) {
   // Form
   const [formData, setFormData] = useState({
-    title: title || '',
-    content: content || '',
+    title: htmlDecode(title) || '',
+    content: htmlDecode(content) || '',
     isPublished: isPublished || false,
   });
   // Imperative form submit

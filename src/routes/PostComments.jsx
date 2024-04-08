@@ -1,4 +1,5 @@
 import { useLoaderData, Form } from 'react-router-dom';
+import { htmlDecode } from '../utils/htmlDecode';
 
 export default function PostComments() {
   const comments = useLoaderData();
@@ -15,10 +16,10 @@ export default function PostComments() {
         <div key={comment._id}>
           <p>
             {' '}
-            <b>{comment.username}:</b>{' '}
+            <b>{htmlDecode(comment.username)}:</b>{' '}
           </p>
           <span>
-            {comment.text}
+            {htmlDecode(comment.text)}
             <Form
               method="delete"
               action={`${comment._id}/delete`}
