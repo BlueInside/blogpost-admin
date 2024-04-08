@@ -17,12 +17,13 @@ export default function Navbar({ isLoggedIn }) {
           <Link to={'posts'}>Posts</Link>
         </li>
         <li>
-          <Link to={'posts/create'}>New Post</Link>
+          <Link to={'posts/new'}>New Post</Link>
         </li>
       </ul>
     </>
   );
 }
+
 Navbar.propTypes = {
   isLoggedIn: PropTypes.bool,
 };
