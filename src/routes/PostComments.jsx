@@ -21,7 +21,7 @@ export default function PostComments() {
             {comment.text}
             <Form
               method="delete"
-              action={`${comment._id}`}
+              action={`${comment._id}/delete`}
               onSubmit={confirmDeletion}
             >
               <button type="submit">Delete</button>
