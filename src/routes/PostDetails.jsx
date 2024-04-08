@@ -1,4 +1,4 @@
-import { useLoaderData, Outlet } from 'react-router-dom';
+import { useLoaderData, Outlet, useActionData } from 'react-router-dom';
 import { useState } from 'react';
 import EditPostForm from '../components/EditPostForm';
 
@@ -6,12 +6,22 @@ export default function PostDetails() {
   const [showComments, setShowComments] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const post = useLoaderData();
+  const errors = useActionData();
+
+  console.log(errors);
 
   if (!post) return <p>Post not found</p>;
   if (isEditing)
     return <EditPostForm {...post} closeEditForm={() => setIsEditing(false)} />;
   return (
     <div>
+      {/* Display validation errors */}
+      {errors?.validationErrors &&
+        errors.validationErrors.map((error, index) => (
+          <p key={index}>
+            <span>{`${error.path} - ${error.msg}`}</span>
+          </p>
+        ))}
       <h1>{post.title}</h1>
       <button onClick={() => setIsEditing(!isEditing)}>Edit</button>
       <div>
