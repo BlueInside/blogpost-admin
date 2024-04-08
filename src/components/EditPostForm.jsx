@@ -1,21 +1,20 @@
-import { Form } from 'react-router-dom';
+import { Form, useSubmit } from 'react-router-dom';
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 export default function EditPostForm({
-  handleCancelEdit,
+  closeEditForm,
   title,
   content,
   isPublished,
-  timeStamp,
 }) {
   // Form
   const [formData, setFormData] = useState({
     title: title || '',
     content: content || '',
     isPublished: isPublished || false,
-    // Changes 2024-03-28T11:47:02.249Z into 2024-03-28
-    timeStamp: `${timeStamp}`.toString().split('T')[0] || new Date(),
   });
+  // Imperative form submit
+  const submit = useSubmit();
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -28,7 +27,13 @@ export default function EditPostForm({
   };
 
   return (
-    <Form>
+    <Form
+      method="PUT"
+      onSubmit={(event) => {
+        submit(event.currentTarget);
+        closeEditForm();
+      }}
+    >
       <div>
         <label htmlFor="title">Title:</label>
         <input
@@ -52,29 +57,22 @@ export default function EditPostForm({
       </div>
       <div>
         <label htmlFor="isPublished">Is Published:</label>
+        {/* If checkbox is not checked sends hidden value */}
+        <input type="hidden" value="false" name="isPublished" />
         <input
           type="checkbox"
           id="isPublished"
           name="isPublished"
           checked={formData.isPublished}
           onChange={handleCheckboxChange}
-        />
-      </div>
-      <div>
-        <label htmlFor="timeStamp">Time Stamp:</label>
-        <input
-          type="date"
-          id="timeStamp"
-          name="timeStamp"
-          defaultValue={formData.timeStamp}
-          required
+          value="true"
         />
       </div>
       <button
         type="button"
         onClick={() => {
           if (confirm('Are you sure you want to lose the changes?')) {
-            handleCancelEdit();
+            closeEditForm();
           } else return;
         }}
       >
@@ -86,7 +84,7 @@ export default function EditPostForm({
 }
 
 EditPostForm.propTypes = {
-  handleCancelEdit: PropTypes.func,
+  closeEditForm: PropTypes.func,
   title: PropTypes.string,
   content: PropTypes.string,
   isPublished: PropTypes.bool,
