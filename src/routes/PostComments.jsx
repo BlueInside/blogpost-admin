@@ -1,8 +1,7 @@
-import { useLoaderData, Form, useActionData } from 'react-router-dom';
+import { useLoaderData, Form } from 'react-router-dom';
 
 export default function PostComments() {
   const comments = useLoaderData();
-  const errors = useActionData();
 
   const confirmDeletion = (e) => {
     if (!confirm('Are you sure to delete this comment?')) {
@@ -25,7 +24,6 @@ export default function PostComments() {
               action={`${comment._id}`}
               onSubmit={confirmDeletion}
             >
-              {errors?.delete && <p>{errors.delete}</p>}
               <button type="submit">Delete</button>
             </Form>
           </span>
