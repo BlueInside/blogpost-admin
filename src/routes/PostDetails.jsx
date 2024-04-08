@@ -1,14 +1,21 @@
 import { useLoaderData, Outlet } from 'react-router-dom';
 import { useState } from 'react';
+import EditPostForm from '../components/EditPostForm';
 
 export default function PostDetails() {
   const [showComments, setShowComments] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
   const post = useLoaderData();
-  if (!post) return <p>Post not found</p>;
 
+  if (!post) return <p>Post not found</p>;
+  if (isEditing)
+    return (
+      <EditPostForm {...post} handleCancelEdit={() => setIsEditing(false)} />
+    );
   return (
     <div>
       <h1>{post.title}</h1>
+      <button onClick={() => setIsEditing(!isEditing)}>Edit</button>
       <div>
         <span>{post.author.fullname} </span>
         <span>{post.formattedTimeStamp} </span>
