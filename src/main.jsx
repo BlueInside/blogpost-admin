@@ -10,6 +10,8 @@ import { postsLoader, postLoader, commentsLoader } from './postsLoader.jsx';
 import PostDetails from './routes/PostDetails.jsx';
 import PostComments from './routes/PostComments.jsx';
 import { actionDelete } from './deleteComment.jsx';
+import { actionUpdate } from './updateComment.jsx';
+
 const router = createBrowserRouter([
   {
     path: '/',
@@ -29,6 +31,7 @@ const router = createBrowserRouter([
         path: '/posts/:postId',
         element: <PostDetails />,
         loader: postLoader,
+        action: actionUpdate,
         children: [
           {
             path: '',
@@ -36,7 +39,7 @@ const router = createBrowserRouter([
             loader: commentsLoader,
           },
           {
-            path: ':commentId',
+            path: ':commentId/delete',
             action: actionDelete,
           },
         ],
