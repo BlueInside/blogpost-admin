@@ -69,10 +69,11 @@ export const Button = styled.button`
 `;
 
 export const PostContainer = styled.div`
+  max-width: 800px;
   border: 1px solid #ccc;
   border-radius: 8px;
   padding: 20px;
-  margin: 15px 10px;
+  margin: 15px auto;
 `;
 
 export const Title = styled.h2`
@@ -87,7 +88,7 @@ export const AuthorTimestamp = styled.div`
 `;
 
 export const Content = styled.p`
-  max-width: 600px; /* Adjust max-width as needed */
+  max-width: 600;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
