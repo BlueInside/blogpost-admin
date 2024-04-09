@@ -9,6 +9,12 @@ const theme = {
     accentYellow: '#f6ff00',
     accentGreen: '#00ffda',
   },
+
+  errorColors: {
+    neonPink: '#ff007f',
+    brightCyan: '#00ffff',
+    lighterPink: '#ff66b3', // For text
+  },
 };
 
 export default theme;

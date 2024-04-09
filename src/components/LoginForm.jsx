@@ -1,6 +1,13 @@
-import { Form, useActionData } from 'react-router-dom';
+import { useActionData } from 'react-router-dom';
 import { useState } from 'react';
-
+import {
+  FormContainer,
+  FormGroup,
+  Label,
+  Input,
+  Button,
+} from './StyledComponents/StyledComponents.styled';
+import { StyledHeading } from './StyledComponents/StyledComponents.styled';
 export default function LoginForm() {
   const errors = useActionData();
 
@@ -16,10 +23,11 @@ export default function LoginForm() {
   return (
     <>
       {errors?.response && <p>{errors.response}</p>}
-      <Form method="post">
-        <div>
-          <label htmlFor="username">Username: </label>
-          <input
+      <FormContainer method="post">
+        <StyledHeading>Login</StyledHeading>
+        <FormGroup>
+          <Label htmlFor="username">Username: </Label>
+          <Input
             type="text"
             id="username"
             name="username"
@@ -27,10 +35,10 @@ export default function LoginForm() {
             onChange={handleInputChange}
           />
           {errors?.username && <p>{errors.username}</p>}
-        </div>
-        <div>
-          <label htmlFor="password">Password: </label>
-          <input
+        </FormGroup>
+        <FormGroup>
+          <Label htmlFor="password">Password: </Label>
+          <Input
             type="password"
             id="password"
             name="password"
@@ -38,11 +46,11 @@ export default function LoginForm() {
             onChange={handleInputChange}
           />
           {errors?.password && <p>{errors.password}</p>}
-        </div>
-        <div>
-          <button>Submit</button>
-        </div>
-      </Form>
+        </FormGroup>
+        <FormGroup>
+          <Button>Submit</Button>
+        </FormGroup>
+      </FormContainer>
     </>
   );
 }

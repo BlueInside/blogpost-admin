@@ -1,5 +1,10 @@
 import { useLoaderData, Form } from 'react-router-dom';
 import { htmlDecode } from '../utils/htmlDecode';
+import {
+  CommentsContainer,
+  CommentContainer,
+  Username,
+} from '../components/StyledComponents/Comments.styled';
 
 export default function PostComments() {
   const comments = useLoaderData();
@@ -11,25 +16,23 @@ export default function PostComments() {
   };
 
   return (
-    <div>
+    <CommentsContainer>
       {comments.map((comment) => (
-        <div key={comment._id}>
-          <p>
+        <CommentContainer key={comment._id}>
+          <div style={{ display: 'flex' }}>
             {' '}
-            <b>{htmlDecode(comment.username)}:</b>{' '}
-          </p>
-          <span>
-            {htmlDecode(comment.text)}
+            <Username>{htmlDecode(comment.username)}:</Username>{' '}
             <Form
               method="delete"
               action={`${comment._id}/delete`}
               onSubmit={confirmDeletion}
             >
-              <button type="submit">Delete</button>
+              <button type="submit">X</button>
             </Form>
-          </span>
-        </div>
+          </div>
+          <span>{htmlDecode(comment.text)}</span>
+        </CommentContainer>
       ))}
-    </div>
+    </CommentsContainer>
   );
 }

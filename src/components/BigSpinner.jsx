@@ -1,10 +1,12 @@
-import '../styles/BigSpinner.css'; // Import CSS file for styling
-
+import {
+  StyledBigSpinner,
+  BigSpinnerContainer,
+} from './StyledComponents/BigSpinner.styled';
 const BigSpinner = () => {
   return (
-    <div className="big-spinner-container">
-      <div className="big-spinner"></div>
-    </div>
+    <BigSpinnerContainer>
+      <StyledBigSpinner></StyledBigSpinner>
+    </BigSpinnerContainer>
   );
 };
 

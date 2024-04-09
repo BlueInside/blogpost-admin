@@ -1,14 +1,18 @@
 import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
-
+import {
+  PostContainer,
+  Title,
+  Content,
+} from './StyledComponents/StyledComponents.styled';
 export default function Post({ id, title, content, isPublished }) {
   const navigate = useNavigate();
   return (
-    <div key={id} onClick={() => navigate(`${id}`)}>
-      <h2>{title}</h2>
-      <p>{content}</p>
+    <PostContainer key={id} onClick={() => navigate(`${id}`)}>
+      <Title>{title}</Title>
       <p>Published: {isPublished ? '✅' : '❌'}</p>
-    </div>
+      <Content>{content}</Content>
+    </PostContainer>
   );
 }
 

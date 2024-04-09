@@ -1,7 +1,19 @@
-import { Form, useSubmit } from 'react-router-dom';
+import { useSubmit } from 'react-router-dom';
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { htmlDecode } from '../utils/htmlDecode';
+import {
+  StyledForm,
+  FormGroup,
+  Label,
+  Input,
+  Textarea,
+  CheckboxContainer,
+  CheckboxLabel,
+  CancelButton,
+  SubmitButton,
+  CheckBox,
+} from './StyledComponents/Form.styled';
 export default function EditPostForm({
   closeEditForm,
   title,
@@ -28,15 +40,15 @@ export default function EditPostForm({
   };
 
   return (
-    <Form
+    <StyledForm
       method="PUT"
       onSubmit={(event) => {
         submit(event.currentTarget);
         closeEditForm();
       }}
     >
-      <div>
-        <label htmlFor="title">Title:</label>
+      <FormGroup>
+        <Label htmlFor="title">Title:</Label>
         <input
           type="text"
           id="title"
@@ -45,31 +57,33 @@ export default function EditPostForm({
           onChange={handleInputChange}
           required
         />
-      </div>
-      <div>
-        <label htmlFor="content">Content:</label>
-        <textarea
+      </FormGroup>
+      <FormGroup style={{ height: '40vh' }}>
+        <Label htmlFor="content">Content:</Label>
+        <Textarea
           id="content"
           name="content"
           value={formData.content}
           onChange={handleInputChange}
           required
         />
-      </div>
-      <div>
-        <label htmlFor="isPublished">Is Published:</label>
-        {/* If checkbox is not checked sends hidden value */}
-        <input type="hidden" value="false" name="isPublished" />
-        <input
-          type="checkbox"
-          id="isPublished"
-          name="isPublished"
-          checked={formData.isPublished}
-          onChange={handleCheckboxChange}
-          value="true"
-        />
-      </div>
-      <button
+      </FormGroup>
+      <FormGroup>
+        <CheckboxContainer>
+          <CheckboxLabel htmlFor="isPublished">Is Published:</CheckboxLabel>
+          {/* If checkbox is not checked sends hidden value */}
+          <Input type="hidden" value="false" name="isPublished" />
+          <CheckBox
+            type="checkbox"
+            id="isPublished"
+            name="isPublished"
+            checked={formData.isPublished}
+            onChange={handleCheckboxChange}
+            value="true"
+          />
+        </CheckboxContainer>
+      </FormGroup>
+      <CancelButton
         type="button"
         onClick={() => {
           if (confirm('Are you sure you want to lose the changes?')) {
@@ -78,9 +92,9 @@ export default function EditPostForm({
         }}
       >
         Cancel
-      </button>
-      <button type="submit">Submit</button>
-    </Form>
+      </CancelButton>
+      <SubmitButton type="submit">Submit</SubmitButton>
+    </StyledForm>
   );
 }
 

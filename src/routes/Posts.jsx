@@ -1,21 +1,27 @@
 import { useLoaderData, useOutletContext } from 'react-router-dom';
 import Post from '../components/Post';
-import { Link } from 'react-router-dom';
-import { htmlDecode } from '../utils/htmlDecode';
 
-export default function Posts() {
+import { htmlDecode } from '../utils/htmlDecode';
+import {
+  StyledHeading,
+  StyledContainer,
+  StyledLink,
+} from '../components/StyledComponents/StyledComponents.styled';
+function Posts() {
   const posts = useLoaderData();
   const [isLoggedIn] = useOutletContext();
 
   if (!isLoggedIn)
     return (
-      <h1>
-        Please log in first: <Link to={'/login'}>here</Link>
-      </h1>
+      <StyledContainer>
+        <StyledHeading>
+          Please log in first: <StyledLink to={'/login'}>here</StyledLink>
+        </StyledHeading>
+      </StyledContainer>
     );
   return (
     <>
-      <h1>Posts: </h1>
+      <StyledHeading>Posts: </StyledHeading>
       {posts.length === 0 && <p>There is no posts</p>}
       {posts.map((post) => (
         <Post
@@ -29,3 +35,4 @@ export default function Posts() {
     </>
   );
 }
+export default Posts;
