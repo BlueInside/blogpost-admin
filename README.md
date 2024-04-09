@@ -2,6 +2,8 @@
 
 Welcome to BlogPost Admin! This is the admin interface for managing the content of your blog posts. With BlogPost Admin, you can create, edit, and delete blog posts, as well as manage their associated metadata.
 
+This project is part of The Odin Project
+
 ## Features
 
 - **Manage Blog Posts**: Create new blog posts, edit existing ones, and delete posts as needed.
@@ -40,6 +42,16 @@ Once you've accessed the admin interface, you can perform the following tasks:
 - **Edit Existing Blog Posts**: Navigate to the list of existing posts and click on the "Edit" button next to the post you wish to edit. Make your changes and click "Save" to update the post.
 - **Delete Blog Posts**: To delete a blog post, simply navigate to the list of posts and click on the "Delete" button next to the post you wish to remove.
 - **Delete Blog Comments**
+
+## What I Learned
+
+Through the process of creating BlogPost Admin, I learned:
+
+- **User Authentication**: Implementing a secure authentication system to control access to the admin interface.
+- **State Management**: Managing application state effectively to ensure a smooth user experience.
+- **CRUD Operations**: Performing CRUD (Create, Read, Update, Delete) operations on blog post data.
+- **API Integration**: Integrating with a backend API to fetch and manage blog post data.
+- **UI Design**: Designing an intuitive and user-friendly interface for content management.
 
 ## Contributing
 
