@@ -4,7 +4,7 @@ export async function actionCreate({ request }) {
   const form = await request.formData();
   const formData = Object.fromEntries(form);
 
-  const url = `http://localhost:3000/posts/`;
+  const url = `https://blogpost-restapi.fly.dev/posts/`;
   const token = localStorage.getItem('accessToken');
 
   const options = {

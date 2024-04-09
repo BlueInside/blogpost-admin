@@ -20,7 +20,7 @@ export async function actionLogin({ request }) {
   }
 
   // Login user and redirect
-  const url = 'http://localhost:3000/users/login';
+  const url = 'https://blogpost-restapi.fly.dev/users/login';
   const options = {
     mode: 'cors',
     method: request.method,

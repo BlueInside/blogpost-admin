@@ -4,7 +4,7 @@ export async function actionUpdate({ params, request }) {
   const formData = await request.formData();
   let updates = Object.fromEntries(formData);
   let errors = {};
-  const url = `http://localhost:3000/posts/${params.postId}`;
+  const url = `https://blogpost-restapi.fly.dev/posts/${params.postId}`;
   const token = localStorage.getItem('accessToken');
   const options = {
     mode: 'cors',
