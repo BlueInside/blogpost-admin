@@ -1,5 +1,5 @@
 export async function postsLoader() {
-  const url = `https://blogpost-restapi.fly.dev/posts`;
+  const url = `https://blogpost-app-production.up.railway.app/posts`;
   const options = { mode: 'cors' };
   const res = await fetch(url, options);
   if (res.status > 400) {
@@ -9,7 +9,7 @@ export async function postsLoader() {
 }
 
 export async function postLoader({ params }) {
-  const url = `https://blogpost-restapi.fly.dev/posts/${params.postId}`;
+  const url = `https://blogpost-app-production.up.railway.app/posts/${params.postId}`;
   const options = { mode: 'cors' };
   const res = await fetch(url, options);
   if (res.status > 400) {
@@ -19,7 +19,7 @@ export async function postLoader({ params }) {
 }
 
 export async function commentsLoader({ params }) {
-  const url = `https://blogpost-restapi.fly.dev/posts/${params.postId}/comments`;
+  const url = `https://blogpost-app-production.up.railway.app/posts/${params.postId}/comments`;
   const options = { mode: 'cors' };
   const res = await fetch(url, options);
   if (res.status > 400) {

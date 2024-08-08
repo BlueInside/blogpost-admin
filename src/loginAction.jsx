@@ -20,7 +20,7 @@ export async function actionLogin({ request }) {
   }
 
   // Login user and redirect
-  const url = 'https://blogpost-restapi.fly.dev/users/login';
+  const url = 'https://blogpost-app-production.up.railway.app/users/login';
   const options = {
     mode: 'cors',
     method: request.method,

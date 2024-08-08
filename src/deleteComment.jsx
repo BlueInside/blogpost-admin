@@ -1,7 +1,7 @@
 import { redirect } from 'react-router-dom';
 
 export async function actionDelete({ params }) {
-  const url = `https://blogpost-restapi.fly.dev/posts/${params.postId}/comments/${params.commentId}`;
+  const url = `https://blogpost-app-production.up.railway.app/posts/${params.postId}/comments/${params.commentId}`;
   const token = localStorage.getItem('accessToken');
   const options = {
     mode: 'cors',
